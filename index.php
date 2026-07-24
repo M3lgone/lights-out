@@ -4,7 +4,7 @@ require_once 'LightsOutGame.php';
 
 session_start();
 
-if (isset($_GET['reset'])) {
+if (isset($_GET['randomize'])) {
     unset($_SESSION['game_state']);
     header("Location: index.php");
     exit;
@@ -12,13 +12,15 @@ if (isset($_GET['reset'])) {
 
 if (!isset($_SESSION['game_state'])) {
 
-    $initialLayout = [
-        [true, true, true, true],
-        [true, true, true, true],
-        [true, true, true, true],
-        [true, true, true, true]
-    ];
-    $_SESSION['game_state'] = $initialLayout;
+    $randomLayout = [];
+    $boardSize = rand(3, 6); 
+    
+    for ($row = 0; $row < $boardSize; $row++) {
+        for ($col = 0; $col < $boardSize; $col++) {
+            $randomLayout[$row][$col] = (bool) rand(0, 1);
+        }
+    }
+    $_SESSION['game_state'] = $randomLayout;
 }
 
 $game = new LightsOutGame($_SESSION['game_state']);

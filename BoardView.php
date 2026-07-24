@@ -33,9 +33,9 @@
         </div>
     </div>
 
-    <a href="?reset=1" 
+    <a href="?randomize=1" 
        class="mt-8 px-6 py-2 bg-slate-700 text-white rounded-lg border border-slate-600 hover:bg-slate-600 transition-colors">
-        Restart Game
+        Restart/Randomize
     </a>
 
 </body>
