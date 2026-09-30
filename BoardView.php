@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lights Out puzzle game built with plain PHP. Turn off all the lights.">
     <title>Lights Out</title>
+    <link rel="icon" type="image/svg+xml" href="assets/Lights-out-favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes win-in {
@@ -73,10 +74,16 @@
             </a>
         </div>
 
-        <section aria-label="How to play" class="mt-6 max-w-sm text-center text-xs leading-relaxed text-slate-500 border-t border-slate-800/80 pt-4">
-            <p>Tap a light to toggle it plus its neighbours. Turn them all off to win.</p>
-            <p class="mt-1 text-slate-600">Restart retries this puzzle · Randomize deals a new one (size may change).</p>
+        <section aria-label="How to play" class="mt-6 w-full max-w-[26rem] text-center border-t border-slate-800/80 pt-4">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">How to play</p>
+            <div class="mt-2 space-y-1 text-xs leading-relaxed text-slate-500">
+                <p>Click a light to toggle it and its neighbours.</p>
+                <p>Turn them all off to win.</p>
+                <p class="text-slate-600">Restart retries this puzzle · Randomize deals a new one.</p>
+            </div>
         </section>
+
+        <footer class="mt-10 text-center text-xs text-slate-600">© 2026 Mel Lab · Ismael González</footer>
     </main>
 
 </body>

@@ -1,25 +1,48 @@
-# Lights Out – PHP Puzzle Game
+<p align="center">
+  <img src="assets/logo-lights-out.png" alt="Lights Out logo" width="400">
+</p>
 
-A small Lights Out puzzle game built with plain PHP, no frameworks.
+<p align="center">
+  A small Lights Out puzzle game built with plain PHP, no frameworks.<br>
+  Click a light to toggle it and its neighbours — turn them all off to win.
+</p>
 
-Clicking a light toggles it plus its orthogonal neighbours. Turn off all the lights to win.
+## Screenshots
 
-## Demo
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/screenshoot-lights-out.png" alt="Lights Out mid-game board" width="100%"><br>
+      <sub>Mid-game board</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="assets/screenshoot-lights-out-win.png" alt="Lights Out win state" width="100%"><br>
+      <sub>Win state</sub>
+    </td>
+  </tr>
+</table>
 
-Screenshot coming soon (`screenshots/game.png`).
+## Features
 
-Capture recommendation: mid-game board with some lights ON and some OFF, with the move counter and controls visible.
+- Random board size between 3x3 and 6x6.
+- Clicking a cell toggles itself and its orthogonal neighbours.
+- Move counter with live updates.
+- `Restart` retries the current puzzle.
+- `Randomize` generates a new solvable puzzle.
+- Win detection with move count.
+- Responsive interface.
 
-## Rules
+## How to Play
 
-- The goal is to turn off all the lights.
-- Clicking a cell toggles itself plus up / down / left / right.
-- Clicks outside the board are not possible; edge and corner cells only affect existing neighbours.
-- You win when every light is OFF.
+1. Click a light to toggle it and its orthogonal neighbours.
+2. Turn off all the lights to win.
+3. Use `Restart` to retry the current puzzle, or `Randomize` for a new one.
 
-## How to Run
+## Quickstart
 
-Start the PHP built-in server from the project folder:
+Requirements: PHP 8+ (no Composer, no build step).
+
+Start the built-in server from the project folder:
 
 ```bash
 php -S localhost:8000
@@ -31,22 +54,28 @@ Then open in your browser:
 http://localhost:8000/index.php
 ```
 
-Controls:
+## Tech Stack
 
-- `Restart` restores the initial board of the current game and resets the move counter.
-- `Randomize` generates a new random board (random size between 3 and 6) and resets the move counter.
+- PHP, no frameworks.
+- Tailwind CSS via CDN.
+- PHP sessions for game state.
+
+Board generation: each game starts from an all-OFF board with random size 3–6, then applies random valid moves. This keeps the random size while ensuring boards are reachable and never start already solved.
 
 ## Project Structure
 
-- `index.php` – controller: session state (`initial` / `current` / `moves`), input validation, Restart / Randomize, PRG redirects.
-- `LightsOutGame.php` – game logic: flip, orthogonal neighbours, board limits, win condition, solvable random board generation.
-- `BoardView.php` – presentation only: HTML + Tailwind CSS via CDN, responsive board, accessibility labels.
+```text
+.
+├── index.php              # Controller and session state
+├── LightsOutGame.php      # Game logic and board generation
+├── BoardView.php          # HTML presentation
+└── assets/
+    ├── logo-lights-out.png
+    ├── Lights-out-favicon.svg
+    ├── screenshoot-lights-out.png
+    └── screenshoot-lights-out-win.png
+```
 
-## Tech
+## Author
 
-- PHP (no frameworks, `declare(strict_types=1)`)
-- Tailwind CSS via CDN (kept intentionally: no build step needed for this size)
-- PHP sessions for game state
-- Post/Redirect/Get after every action to avoid duplicate moves on refresh
-
-Board generation: each game starts from an all-OFF board with random size 3–6, then applies random valid moves. This keeps the random size from the original kata while ensuring boards are reachable and never start already solved.
+© 2026 Mel Lab · Ismael González
